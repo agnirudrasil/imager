@@ -6,6 +6,11 @@ const sharp = require("sharp");
 const imager = (req, res) => {
     const pipeline = sharp();
     const url = req.query.url;
+    const token = req.query.token;
+    if (token !== process.env.API_TOKEN) {
+        res.status(401).end();
+        return;
+    }
     if (!url || typeof url === 'object') {
         res.status(401).end();
         return;
