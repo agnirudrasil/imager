@@ -1,2 +1,2 @@
 # imager
-A work in progress media proxy
+A work in progress media resizing server
