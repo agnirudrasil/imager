@@ -95,7 +95,7 @@ def getmodel(model_name):
     return model
 
 def style_transfer(image, model):
-    model = cv.dnn.readNetFromTorch(model)
+    model = getmodel(model)
     
     (h, w) = image.shape[:2]
     
