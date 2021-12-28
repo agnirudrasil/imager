@@ -4,6 +4,17 @@ from flask import Request, abort, send_file
 from cairosvg import svg2png
 from io import BytesIO
 
+def to_svg(url):
+    svg = requests.get(url).content
+    return BytesIO(svg2png(bytestring=svg))
+
+def to_bytes(img):
+    image = Image.fromarray((img).astype(np.uint8))
+    bytes = BytesIO()
+    image.save(bytes, format='PNG')
+    bytes.seek(0)
+    return bytes
+
 
 def imager(request: Request):
     url = request.args.get('url')
